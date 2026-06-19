@@ -1,15 +1,21 @@
 import RedeemButton from "./RedeemButton";
 import Link from "next/link";
 import QRCode from "react-qr-code";
+
+const BASE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  "http://localhost:3000";
+
 interface PageProps {
   params: Promise<{
     id: string;
   }>;
 }
 
+
 async function getCustomer(id: string) {
   const res = await fetch(
-    `http://localhost:3000/api/customer?id=${id}`,
+    `${BASE_URL}/api/customer?id=${id}`,
     {
       cache: "no-store",
     }
@@ -20,7 +26,7 @@ async function getCustomer(id: string) {
 
 async function getRewards() {
   const res = await fetch(
-    "http://localhost:3000/api/reward",
+    "${BASE_URL}/api/reward",
     {
       cache: "no-store",
     }
@@ -30,7 +36,7 @@ async function getRewards() {
 }
 async function getRewardHistory(id: string) {
   const res = await fetch(
-    `http://localhost:3000/api/reward-history?customerId=${id}`,
+    `${BASE_URL}/api/reward-history?customerId=${id}`,
     {
       cache: "no-store",
     }
@@ -246,7 +252,7 @@ async function redeemReward(id: number) {
     
 
     <QRCode
-      value={`http://localhost:3000/scan/${customer.id}`}
+      value={`${BASE_URL}/scan/${customer.id}`}
       size={180}
     />
   </div>
