@@ -26,7 +26,7 @@ async function getCustomer(id: string) {
 
 async function getRewards() {
   const res = await fetch(
-    "${BASE_URL}/api/reward",
+    `${BASE_URL}/api/reward`,
     {
       cache: "no-store",
     }
@@ -93,7 +93,7 @@ async function redeemReward(id: number) {
   "use server";
 
   await fetch(
-    "http://localhost:3000/api/reward-history",
+    `${BASE_URL}/api/reward-history`,
     {
       method: "PATCH",
       headers: {
