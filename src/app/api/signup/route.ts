@@ -28,6 +28,7 @@ export async function POST(req: Request) {
     );
 
     const user = await prisma.user.create({
+      
       data: {
         name: body.name,
         // businessName: body.businessName,
@@ -37,6 +38,15 @@ export async function POST(req: Request) {
         // role: body.role || "CUSTOMER",
       },
     });
+    if ((body.role || "CUSTOMER") === "CUSTOMER") {
+      await prisma.customer.create({
+        data: {
+          name: body.name,
+          phone: body.phone || "",
+          email: body.email,
+        },
+      });
+    }
 
     return NextResponse.json({
       success: true,
