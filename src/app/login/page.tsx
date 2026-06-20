@@ -21,6 +21,9 @@ password,
 
 const data = await res.json();
 
+console.log(data);
+alert(JSON.stringify(data));
+
 if (data.success) {
   alert("Login Successful!");
 
