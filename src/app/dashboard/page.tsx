@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import QRCode from "react-qr-code";
+
 export default function DashboardPage() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -31,6 +33,10 @@ export default function DashboardPage() {
   const [rewardTitle, setRewardTitle] = useState("");
   const [requiredStamps, setRequiredStamps] = useState(5);
   const [rewardType, setRewardType] = useState("Gift");
+  const qrValue =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/scan/owner`
+      : "";
 
   const loadCustomers = async () => {
     const res = await fetch("/api/customer");
@@ -156,6 +162,22 @@ export default function DashboardPage() {
         <h1 className="mb-8 text-4xl font-bold">
           Business Dashboard
         </h1>
+        <div className="mb-8 rounded-2xl bg-white p-6 shadow">
+          <h2 className="mb-4 text-2xl font-bold">
+            📱 Business QR Code
+          </h2>
+
+          <div className="flex justify-center">
+            <QRCode
+              value={qrValue}
+              size={180}
+            />
+          </div>
+
+          <p className="mt-4 text-center text-gray-600">
+            Reward your customers instantly through QR-based loyalty tracking
+          </p>
+        </div>
 
         {/* Stats */}
         <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6">

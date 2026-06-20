@@ -1,11 +1,14 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function ScanPage() {
   const params = useParams();
 
   const collectStamp = async () => {
+    console.log("Sending ID:", Number(params.id));
+    
     const res = await fetch("/api/customer", {
       method: "PATCH",
       headers: {
@@ -18,10 +21,17 @@ export default function ScanPage() {
 
     const data = await res.json();
 
+    console.log("API Response:", data);
+
     if (data.success) {
       alert("🎉 Stamp Collected Successfully!");
+    } else {
+      alert("Failed");
     }
   };
+  useEffect(() => {
+    collectStamp();
+    }, []);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-100">
@@ -34,13 +44,6 @@ export default function ScanPage() {
         <p>
           Customer ID: {params.id}
         </p>
-
-        <button
-          onClick={collectStamp}
-          className="mt-6 rounded-xl bg-green-600 px-6 py-3 text-white"
-        >
-          Collect Stamp
-        </button>
 
       </div>
     </div>
