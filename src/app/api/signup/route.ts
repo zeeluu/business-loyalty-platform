@@ -6,6 +6,22 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
+    const existingUser = await prisma.user.findUnique({
+      where: {
+        email: body.email,
+      },
+    });
+
+    if (existingUser) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Email already exists",
+        },
+        { status: 400 }
+      );
+    }
+
     const hashedPassword = await bcrypt.hash(
       body.password,
       10
@@ -14,8 +30,11 @@ export async function POST(req: Request) {
     const user = await prisma.user.create({
       data: {
         name: body.name,
+        businessName: body.businessName,
+        phone: body.phone,
         email: body.email,
         password: hashedPassword,
+        role: body.role || "CUSTOMER",
       },
     });
 
@@ -29,6 +48,6 @@ export async function POST(req: Request) {
     return NextResponse.json(
       { success: false },
       { status: 500 }
-     );
-}
+    );
+  }
 }
