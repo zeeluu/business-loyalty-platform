@@ -27,7 +27,7 @@ if (data.success) {
   if (data.user?.role === "OWNER") {
     window.location.href = "/dashboard";
   } else {
-    window.location.href = `/customers/${data.user.id}`;
+    window.location.href = `/customers/${data.user.customerId}`;
   }
 } else {
   alert(data.message || "Login Failed");

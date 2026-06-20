@@ -38,6 +38,13 @@ export async function POST(req: Request) {
         // role: body.role || "CUSTOMER",
       },
     });
+
+    const customer = await prisma.customer.findFirst({
+      where: {
+        email: user.email,
+      },
+    });
+
     if ((body.role || "CUSTOMER") === "CUSTOMER") {
       await prisma.customer.create({
         data: {
@@ -50,7 +57,13 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      user,
+      message: "Login Successful",
+      user: {
+        id: user.id,
+        name: user.name,
+        role: (user as any).role,
+        customerId: customer?.id || null,
+      },
     });
   } catch (error) {
     console.log("SIGNUP ERROR:", error);
