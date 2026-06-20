@@ -134,6 +134,33 @@ async function redeemReward(id: number) {
           <p>
             <strong>Stamps:</strong> ⭐ {customer.stamps}
           </p>
+
+          <div className="mt-6 rounded-2xl bg-amber-50 p-6 shadow">
+            <h2 className="mb-4 text-2xl font-bold">
+              ⭐ Loyalty Stamp Card
+            </h2>
+
+            <div className="grid grid-cols-5 gap-4">
+              {[...Array(10)].map((_, index) => (
+                <div
+                  key={index}
+                  className={`flex h-16 w-16 items-center justify-center rounded-full border-4 text-2xl ${
+                    index < customer.stamps
+                      ? "border-green-500 bg-green-100"
+                      : "border-gray-300 bg-white"
+                  }`}
+                >
+                  {index < customer.stamps ? "⭐" : ""}
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-4 text-lg font-semibold">
+              {customer.stamps} / 10 Stamps Collected
+            </p>
+          </div>
+
+
           <p>
             <strong>Membership:</strong>{" "}
             {level === "Gold" && "🥇 Gold"}

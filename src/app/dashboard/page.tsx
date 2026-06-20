@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import QRCode from "react-qr-code";
+import dynamic from "next/dynamic";
+import QRCodeComponent from "@/components/QRCodeComponent";
+
 
 export default function DashboardPage() {
   const [name, setName] = useState("");
@@ -13,6 +15,10 @@ export default function DashboardPage() {
   const totalStamps = customers.reduce(
     (sum, customer) => sum + (customer.stamps || 0),
     0
+  );
+  const QRCode = dynamic(
+    () => import("react-qr-code"),
+    { ssr: false }
   );
 
   const goldMembers = customers.filter(
@@ -151,7 +157,14 @@ export default function DashboardPage() {
           <li>Dashboard</li>
           <li>Customers</li>
           <li>Offers</li>
-          <li>Rewards</li>
+          <li>
+            <Link
+              href="/rewards"
+              className="hover:text-cyan-400"
+            >
+              Rewards
+            </Link>
+          </li>
           <li>Analytics</li>
           <li>Settings</li>
         </ul>
@@ -168,15 +181,66 @@ export default function DashboardPage() {
           </h2>
 
           <div className="flex justify-center">
-            <QRCode
+            <QRCodeComponent
               value={qrValue}
-              size={180}
             />
           </div>
 
           <p className="mt-4 text-center text-gray-600">
             Reward your customers instantly through QR-based loyalty tracking
           </p>
+        </div>
+        <div className="mt-10 rounded-2xl bg-white p-8 shadow">
+          <h2 className="mb-6 text-3xl font-bold">
+            Create Offers
+          </h2>
+
+          <p className="mb-6 text-gray-500">
+            Choose an offer type for your customers
+          </p>
+
+          <div className="grid gap-6 md:grid-cols-3">
+
+            <Link
+              href="/offers/stamp-card"
+              className="rounded-3xl bg-red-700 p-8 text-center text-white shadow-lg transition hover:scale-105"
+            >
+              <div className="mb-4 text-5xl">⭐</div>
+              <h3 className="text-2xl font-bold">
+                Stamp Card
+              </h3>
+              <p className="mt-2 text-sm opacity-80">
+                Loyalty Program
+              </p>
+            </Link>
+
+            <Link
+              href="/offers/scratch-card"
+              className="rounded-3xl bg-yellow-600 p-8 text-center text-white shadow-lg transition hover:scale-105"
+            >
+              <div className="mb-4 text-5xl">🎁</div>
+              <h3 className="text-2xl font-bold">
+                Scratch Card
+              </h3>
+              <p className="mt-2 text-sm opacity-80">
+                Instant Gifts
+              </p>
+            </Link>
+
+            <Link
+              href="/offers/catalog"
+              className="rounded-3xl bg-green-600 p-8 text-center text-white shadow-lg transition hover:scale-105"
+            >
+              <div className="mb-4 text-5xl">🏪</div>
+              <h3 className="text-2xl font-bold">
+                Digital Catalog
+              </h3>
+              <p className="mt-2 text-sm opacity-80">
+                QR Catalog
+              </p>
+            </Link>
+
+          </div>
         </div>
 
         {/* Stats */}

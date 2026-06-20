@@ -40,8 +40,12 @@ model Reward {
   title          String
   requiredStamps Int
   rewardType     String
+  image          String?
+  expiryDays     Int?
+  winnerCount    Int?     // Scratch reward
+  scanCount      Int?     // Scratch reward
+  isActive       Boolean  @default(true)
   createdAt      DateTime @default(now())
-  isScratchCard  Boolean  @default(false)
 }
 
 model RewardHistory {

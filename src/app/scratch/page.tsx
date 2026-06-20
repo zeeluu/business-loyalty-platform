@@ -2,9 +2,12 @@
 "use client";
 
 import { useState } from "react";
+import { useParams } from "next/navigation";
+import ScratchCard from "react-scratchcard-v2";
 
 export default function ScratchPage() {
   const [reward, setReward] = useState("");
+  const params = useParams();
 
   const scratchCard = async () => {
     const rewards = [
@@ -30,7 +33,7 @@ export default function ScratchPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        customerId: 1,
+        customerId: Number(params.id),
         rewardTitle: randomReward,
       }),
     });

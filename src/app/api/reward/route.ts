@@ -63,3 +63,35 @@ export async function DELETE(req: Request) {
     );
   }
 }
+export async function PATCH(req: Request) {
+  try {
+    const {
+      id,
+      title,
+      requiredStamps,
+      rewardType,
+    } = await req.json();
+
+    const reward =
+      await prisma.reward.update({
+        where: {
+          id,
+        },
+        data: {
+          title,
+          requiredStamps,
+          rewardType,
+        },
+      });
+
+    return NextResponse.json({
+      success: true,
+      reward,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { success: false },
+      { status: 500 }
+    );
+  }
+}

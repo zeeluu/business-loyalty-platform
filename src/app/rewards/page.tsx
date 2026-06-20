@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function RewardsPage() {
   const [rewards, setRewards] = useState<any[]>([]);
@@ -33,41 +34,27 @@ export default function RewardsPage() {
 
   return (
     <div className="min-h-screen bg-slate-100 p-8">
-      <h1 className="mb-8 text-4xl font-bold">
-        Rewards
-      </h1>
-
       <div className="rounded-2xl bg-white p-8 shadow">
-        <table className="w-full">
+
+        <h1 className="mb-8 text-4xl font-bold">
+          🎁 Reward Management
+        </h1>
+
+        <table className="w-full border-collapse">
           <thead>
             <tr className="border-b">
-              <th className="p-3 text-left">
-                Reward Name
-              </th>
-              <th className="p-3 text-left">
-                Required Stamps
-              </th>
-              <th className="p-3 text-left">
-                Type
-              </th>
-              <th className="p-3 text-left">
-                Action
-              </th>
+              <th className="p-3 text-left">Reward</th>
+              <th className="p-3 text-left">Type</th>
+              <th className="p-3 text-left">Required Stamps</th>
+              <th className="p-3 text-left">Action</th>
             </tr>
           </thead>
 
           <tbody>
             {rewards.map((reward) => (
-              <tr
-                key={reward.id}
-                className="border-b"
-              >
+              <tr key={reward.id} className="border-b">
                 <td className="p-3">
                   {reward.title}
-                </td>
-
-                <td className="p-3">
-                  {reward.requiredStamps}
                 </td>
 
                 <td className="p-3">
@@ -75,19 +62,36 @@ export default function RewardsPage() {
                 </td>
 
                 <td className="p-3">
-                  <button
-                    onClick={() =>
-                      deleteReward(reward.id)
-                    }
-                    className="rounded-lg bg-red-500 px-3 py-2 text-white"
-                  >
-                    Delete
-                  </button>
+                  ⭐ {reward.requiredStamps}
+                </td>
+
+                <td className="p-3">
+                  <div className="flex gap-2">
+
+                    <Link
+                      href={`/rewards/${reward.id}`}
+                      className="rounded-lg bg-blue-500 px-4 py-2 text-white"
+                    >
+                      Edit
+                    </Link>
+
+                    <button
+                      onClick={() =>
+                        deleteReward(reward.id)
+                      }
+                      className="rounded-lg bg-red-500 px-4 py-2 text-white"
+                    >
+                      Delete
+                    </button>
+
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
+
         </table>
+
       </div>
     </div>
   );
