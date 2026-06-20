@@ -31,6 +31,12 @@ if (!isMatch) {
   });
 }
 
+const customer = await prisma.customer.findFirst({
+  where: {
+    email: user.email,
+  },
+});
+
 return NextResponse.json({
   success: true,
   message: "Login Successful",
@@ -38,6 +44,7 @@ return NextResponse.json({
     id: user.id,
     name: user.name,
     role: (user as any).role,
+    customerId: customer?.id || null,
   },
 });
 
