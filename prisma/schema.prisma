@@ -20,6 +20,7 @@ model User {
   email        String   @unique
   password     String
   role         String   @default("CUSTOMER")
+  qrCode       String?  @unique
   createdAt    DateTime @default(now())
 }
 
