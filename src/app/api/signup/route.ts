@@ -30,11 +30,11 @@ export async function POST(req: Request) {
     const user = await prisma.user.create({
       data: {
         name: body.name,
-        businessName: body.businessName,
-        phone: body.phone,
+        // businessName: body.businessName,
+        // phone: body.phone,
         email: body.email,
         password: hashedPassword,
-        role: body.role || "CUSTOMER",
+        // role: body.role || "CUSTOMER",
       },
     });
 
