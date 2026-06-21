@@ -13,7 +13,9 @@ export default function HomePage() {
         <div className="flex gap-6">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/#contact">
+            Contact
+          </Link>
           <Link href="/pricing">Pricing</Link>
         </div>
 
@@ -70,7 +72,8 @@ export default function HomePage() {
   />
 </div>
       {/* Premium Features Section */}
-      <section className="bg-white px-8 py-24">
+      <section>
+
         <div className="mx-auto max-w-7xl">
 
           <h2 className="mb-4 text-center text-5xl font-bold">
@@ -277,6 +280,11 @@ export default function HomePage() {
 </section>
 {/* Contact Section */}
 <section className="bg-white px-8 py-24">
+  {/* Contact Section */}
+<section
+  id="contact"
+  className="bg-white px-8 py-24"
+></section>
   <div className="mx-auto max-w-6xl">
 
     <h2 className="mb-4 text-center text-5xl font-bold">
