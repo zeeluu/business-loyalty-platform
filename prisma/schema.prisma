@@ -56,3 +56,18 @@ model RewardHistory {
   customer    Customer @relation(fields: [customerId], references: [id])
   isRedeemed Boolean @default(false)
 }
+model Visit {
+  id         Int      @id @default(autoincrement())
+  customerId Int
+  createdAt  DateTime @default(now())
+}
+model BusinessProfile {
+  id          Int      @id @default(autoincrement())
+  businessName String
+  phone       String?
+  email       String?
+  address     String?
+  website     String?
+  logo        String?
+  createdAt   DateTime @default(now())
+}

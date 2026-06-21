@@ -278,6 +278,143 @@ export default function HomePage() {
 
   </div>
 </section>
+{/* Testimonials Section */}
+<section className="bg-slate-50 px-8 py-24">
+  <div className="mx-auto max-w-7xl">
+
+    <h2 className="mb-4 text-center text-5xl font-bold">
+      Loved By Businesses
+    </h2>
+
+    <p className="mx-auto mb-16 max-w-3xl text-center text-lg text-gray-500">
+      See what business owners say about BizConnect.
+    </p>
+
+    <div className="grid gap-8 md:grid-cols-3">
+
+      <div className="rounded-3xl bg-white p-8 shadow-lg">
+        <div className="mb-4 text-yellow-500">
+          ★★★★★
+        </div>
+
+        <p className="mb-6 text-gray-600">
+          "BizConnect helped us increase repeat
+          customer visits by more than 40%."
+        </p>
+
+        <h3 className="font-bold">
+          Rahul Patel
+        </h3>
+
+        <p className="text-sm text-gray-500">
+          Cafe Owner
+        </p>
+      </div>
+
+      <div className="rounded-3xl bg-white p-8 shadow-lg">
+        <div className="mb-4 text-yellow-500">
+          ★★★★★
+        </div>
+
+        <p className="mb-6 text-gray-600">
+          "Easy to use, modern and highly
+          effective for customer engagement."
+        </p>
+
+        <h3 className="font-bold">
+          Priya Shah
+        </h3>
+
+        <p className="text-sm text-gray-500">
+          Retail Store Owner
+        </p>
+      </div>
+
+      <div className="rounded-3xl bg-white p-8 shadow-lg">
+        <div className="mb-4 text-yellow-500">
+          ★★★★★
+        </div>
+
+        <p className="mb-6 text-gray-600">
+          "The QR loyalty system made reward
+          collection simple and fun."
+        </p>
+
+        <h3 className="font-bold">
+          Amit Mehta
+        </h3>
+
+        <p className="text-sm text-gray-500">
+          Restaurant Manager
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{/* FAQ Section */}
+<section className="bg-white px-8 py-24">
+  <div className="mx-auto max-w-5xl">
+
+    <h2 className="mb-4 text-center text-5xl font-bold">
+      Frequently Asked Questions
+    </h2>
+
+    <p className="mx-auto mb-16 max-w-2xl text-center text-lg text-gray-500">
+      Everything you need to know about BizConnect.
+    </p>
+
+    <div className="space-y-6">
+
+      <div className="rounded-3xl border p-6">
+        <h3 className="mb-2 text-xl font-bold">
+          How does QR loyalty work?
+        </h3>
+
+        <p className="text-gray-600">
+          Customers scan a QR code and automatically
+          collect loyalty stamps.
+        </p>
+      </div>
+
+      <div className="rounded-3xl border p-6">
+        <h3 className="mb-2 text-xl font-bold">
+          Is BizConnect free?
+        </h3>
+
+        <p className="text-gray-600">
+          Yes, the Starter plan is completely free
+          for the first 6 months.
+        </p>
+      </div>
+
+      <div className="rounded-3xl border p-6">
+        <h3 className="mb-2 text-xl font-bold">
+          Can I create custom rewards?
+        </h3>
+
+        <p className="text-gray-600">
+          Yes, business owners can create and manage
+          unlimited reward campaigns.
+        </p>
+      </div>
+
+      <div className="rounded-3xl border p-6">
+        <h3 className="mb-2 text-xl font-bold">
+          Do customers need an app?
+        </h3>
+
+        <p className="text-gray-600">
+          No, customers can access rewards directly
+          through the web platform.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 {/* Contact Section */}
 <section className="bg-white px-8 py-24">
   {/* Contact Section */}
